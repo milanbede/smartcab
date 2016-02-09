@@ -11,6 +11,7 @@ class LearningAgent(Agent):
         self.color = 'red'  # override color
         self.planner = RoutePlanner(self.env, self)  # simple route planner to get next_waypoint
         self.actions = [None, 'forward', 'left', 'right']
+        self.state = None
 
     def reset(self, destination=None):
         self.planner.route_to(destination)
@@ -22,7 +23,9 @@ class LearningAgent(Agent):
         inputs = self.env.sense(self)
         deadline = self.env.get_deadline(self)
 
-        # TODO: Update state
+        # Update state
+        self.state = (inputs['light'], inputs['oncoming'], inputs['right'], inputs['left'],
+self.next_waypoint)
         
         # TODO: Select action according to your policy
         action = random.choice(self.actions)
@@ -34,6 +37,8 @@ class LearningAgent(Agent):
 
         print "LearningAgent.update(): deadline = {}, inputs = {}, action = {}, reward = {}".format(deadline, inputs, action, reward)  # [debug]
 
+    def get_state(self):
+        return self.state
 
 def run():
     """Run the agent for a finite number of trials."""
