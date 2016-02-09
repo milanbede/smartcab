@@ -1,5 +1,7 @@
 # Train a smartcab how to drive
-Reinforcement Learning Project
+A reinforcement learning demo.
+
+Part of the Udacity Machine Learning Engineer Nanodegree program.
 
 ## Install
 
@@ -19,4 +21,4 @@ OR:
 
 ## Develop
 
-Open `agent.py` and implement `LearningAgent`. Follow the `TODO`s in there for further instructions.
+Open `agent.py` and implement `LearningAgent`.
