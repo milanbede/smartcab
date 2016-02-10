@@ -54,7 +54,7 @@ class Environment(object):
                     self.roads.append((a, b))
 
         # Dummy agents
-        self.num_dummies = 3  # no. of dummy agents
+        self.num_dummies = 10  # no. of dummy agents
         for i in xrange(self.num_dummies):
             self.create_agent(DummyAgent)
 

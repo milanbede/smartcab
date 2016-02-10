@@ -22,6 +22,8 @@ class LearningAgent(Agent):
         self.planner.route_to(destination)
         # Prepare for a new trip; reset any variables here, if required
         self.trips += 1
+        if self.trips >= 100:
+            self.learning_rate = 0
 
     def update(self, t):
         # Gather inputs
@@ -37,14 +39,14 @@ self.next_waypoint)
         # Lazy initialization of Q-values
         for action in self.actions:
             if (state, action) not in self.q:
-                self.q[(state, action)] = 0.1
+                self.q[(state, action)] = 1
         
         # Select action according to the policy
 
         probabilities = [self.q[(state, None)], self.q[(state, 'forward')], self.q[(state, 'left')], self.q[(state, 'right')]]
         # Use the softmax funtion so that the values actually behave like probabilities
         probabilities = np.exp(probabilities) / np.sum(np.exp(probabilities), axis=0)
-        
+
         adventurousness = max((100 - self.trips) / 100, 0)
         if random.random() < adventurousness:
             action = np.random.choice(self.actions, p=probabilities)
