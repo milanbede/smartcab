@@ -1,10 +1,13 @@
 # Train a smartcab how to drive
+
 A reinforcement learning demo.
 
 Part of the Udacity Machine Learning Engineer Nanodegree program.
 
 ### A fully trained agent in action
+
 Note: the smartcab is the red car.
+
 ![Demo GIF](./smartcab.gif?raw=true)
 
 ## Install
